@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/webjars/bootstrap-icons/1.10.5/font/bootstrap-icons.css">
+    <title>Hrayfis List</title>
+</head>
+<body>
+<div layout:fragment="content">
+<main class="container mt-5">
+    <a class="btn btn-outline-success" th:href="@{/createHrayfi}">New Hrayfi</a>
+    <table class="table table-hover">
+        <tr>
+            <th>Hrayfi Id</th>
+            <th>Hrayfi Name</th>
+            <th>Hrayfi Profession </th>
+            <th>Adresse</th>
+            <th>Telephone</th>
+        </tr>
+        <tr th:each="hrayfi:${HrayfisJsp.content}">
+            <td th:text="${hrayfi.idHrayfi}"></td>
+            <td th:text="${hrayfi.nameHrayfi}"></td>
+            <td th:text="${hrayfi.profession}"></td>
+            <td th:text="${hrayfi.adresse}"></td>
+            <td th:text="${hrayfi.telephone}"></td>
+            <td>
+                <a class="btn btn-outline-danger" onClick="return confirm('Are you sure to delete this item?')" th:href="@{/deleteHrayfi(id=${hrayfi.idHrayfi})}" ,page=${currentPage}, size=${size}><i class="bi bi-trash"></i></a>
+            </td>
+            <td>
+                <a class="btn btn-outline-warning" th:href="@{/showHrayfi(id=${hrayfi.idHrayfi})}"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+    </table>
+    <ul class="nav nav-pills">
+        <li th:each="page,status:${pages}">
+            <a th:class="${status.index==currentPage?'btn btn-primary':'btn'}" th:href="@{HrayfisList(page=${status.index}, size=${size})}" th:text="${status.index}"></a>
+        </li>
+    </ul>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="Template.html">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/webjars/bootstrap/5.2.0/css/bootstrap.min.css">
+        <title>Hrayfi Creation</title>
+    </head>
+    <body>
+    <div layout:fragment="content">
+        <main class="container mt-5">
+            <h1>Hrayfi Creation</h1>
+            <form th:action="@{/saveHrayfi}" method="post">
+                <div class="mb-3 w-25">
+                    <label for="nameHrayfi" class="form-label">Hrayfi Name</label>
+                    <input type="text" class="form-control" id="nameHrayfi" name="nameHrayfi">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="proHrayfi" class="form-label">Profession</label>
+                    <input type="text" class="form-control" id="proHrayfi" name="profession">
+                </div>
+                
+                <div class="mb-3 w-25">
+                    <label for="adr" class="form-label">Adresse</label>
+                    <input type="text" class="form-control" id="adr" name="adresse">
+                </div>
+                <div class="mb-3 w-25">
+                    <label for="tel" class="form-label">Telephone</label>
+                    <input type="text" class="form-control" id="tel" name="telephone">
+                </div>
+
+
+                <button type="submit" value="add" class="btn btn-outline-success">Create</button>
+                <a class="btn btn-outline-primary" href="HrayfisList">Hrayfis List</a>
+                </form>
+        </main>
+        <div class="mb-5"></div>
+    </div>
+    </body>
+</html>
+
+
